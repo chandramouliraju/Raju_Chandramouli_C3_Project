@@ -4,6 +4,7 @@ import java.util.List;
 
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
+    private static Restaurant selectedRestaurant;
 
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
        Restaurant restaurantForGivenName = null;
@@ -36,9 +37,5 @@ public class RestaurantService {
 
     public List<Restaurant> getRestaurants() {
         return restaurants;
-    }
-
-    public String calculateOrderValue(List<String> menuItems){
-        return "Your order will cost: ₹";
     }
 }

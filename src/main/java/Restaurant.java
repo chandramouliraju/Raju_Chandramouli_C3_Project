@@ -65,4 +65,19 @@ public class Restaurant {
         return name;
     }
 
+    public String calculateOrderValue(List<String> menuItems){
+        int orderValue = computeOrderCost(menuItems);
+        return "Your order will cost: ₹"+orderValue;
+    }
+
+    private int computeOrderCost(List<String> menuItems) {
+        int cost = 0;
+        for(int i = 0; i < menuItems.size(); i++){
+            Item item = findItemByName(menuItems.get(i));
+            if(item != null){
+                cost += item.getPrice();
+            }
+        }
+        return cost;
+    }
 }
