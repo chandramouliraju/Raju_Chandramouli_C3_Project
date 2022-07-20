@@ -37,4 +37,8 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public String calculateOrderValue(List<String> menuItems){
+        return "Your order will cost: ₹";
+    }
 }

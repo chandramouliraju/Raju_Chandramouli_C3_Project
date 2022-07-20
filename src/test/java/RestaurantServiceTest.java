@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,4 +61,28 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void all_menu_items_from_the_restaurants_when_selected_should_cost_388rs(){
+        List<String> menuItemSelected = new ArrayList<String>();
+        menuItemSelected.add("Sweet corn soup");
+        menuItemSelected.add("Vegetable lasagne");
+        String orderValue = service.calculateOrderValue(menuItemSelected);
+        assertEquals("Your order will cost: ₹388", orderValue);
+    }
+
+    @Test
+    public void order_value_should_be_119_when_selected_sweet_corn_soup(){
+        List<String> menuItemSelected = new ArrayList<String>();
+        menuItemSelected.add("Sweet corn soup");
+        String orderValue = service.calculateOrderValue(menuItemSelected);
+        assertEquals("Your order will cost: ₹119", orderValue);
+    }
+
+    @Test
+    public void order_value_should_be_zero_when_none_selected_in_the_menu(){
+        List<String> menuItemSelected = new ArrayList<String>();
+        String orderValue = service.calculateOrderValue(menuItemSelected);
+        assertEquals("Your order will cost: ₹0", orderValue);
+    }
 }
